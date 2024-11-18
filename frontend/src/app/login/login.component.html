@@ -1,0 +1,29 @@
+<mat-card appearance="outlined">
+  <mat-card-title>Login</mat-card-title>
+  <mat-card-content>
+    <form (ngSubmit)="onLogin()">
+      <mat-form-field appearance="outline">
+        <mat-label>Username</mat-label>
+        <input matInput type="text" id="username" [(ngModel)]="username" name="username" required />
+        <mat-icon matSuffix>person</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" id="password" [(ngModel)]="password" name="password" required />
+        <mat-icon matSuffix>lock</mat-icon>
+      </mat-form-field>
+
+      <mat-card-content *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-flat-button color="primary" type="submit">Login</button>
+      </mat-card-actions>
+    </form>
+  </mat-card-content>
+  <mat-card-content>
+    <p>Don't have an account? <button mat-button (click)="registerEvent()">Register</button></p>
+  </mat-card-content>
+</mat-card>

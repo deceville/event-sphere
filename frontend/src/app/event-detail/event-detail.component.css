@@ -1,0 +1,17 @@
+mat-card-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+mat-spinner {
+  display: block;
+  margin: 0 auto;
+}
+
+.event-details {
+  padding: 16px;
+}
+
+strong {
+  color: #e65555;
+}

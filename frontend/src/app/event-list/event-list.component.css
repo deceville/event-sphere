@@ -1,0 +1,24 @@
+.container {
+  margin: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.event-card {
+  width: 400px;
+}
+
+.event-details {
+  padding: 16px;
+}
+
+strong {
+  color: #e65555;
+}
+
+.create-event {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}

@@ -1,0 +1,70 @@
+/* General Layout */
+.app-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.app-sidebar {
+  width: 250px;
+  background-color: #f4f4f4;
+}
+
+.app-content {
+  padding: 16px;
+  overflow: auto;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.error-message {
+  color: 
+  red;
+}
+/* Aesthetic Enhancements */
+mat-toolbar {
+  font-size: 1.2rem;
+}
+
+mat-nav-list {
+  margin-top: 8px;
+}
+
+mat-list-item {
+  font-size: 1rem;
+}
+
+mat-list-item.active {
+  font-weight: bold;
+  color: #1976d2;
+}
+
+mat-card {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+mat-card-title {
+  margin-bottom: 24px;
+}
+
+mat-divider {
+  border-top-color: lightgray;
+  margin: 16px 0 16px 0;
+}
+
+.mat-mdc-outlined-button {
+  border-color: grey;
+}

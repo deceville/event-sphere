@@ -1,0 +1,26 @@
+<mat-toolbar color="primary">
+  <span>Event List</span>
+</mat-toolbar>
+<mat-card-actions class="create-event">
+  <button mat-flat-button color="primary" *ngIf="role.includes('ROLE_ORGANIZER') || role.includes('ROLE_ADMIN')" (click)="createEvent()">Create New Event</button>
+</mat-card-actions>
+<div class="container">
+  <mat-card *ngFor="let event of events" class="event-card" appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>{{ event.title }}</mat-card-title>
+      <mat-card-subtitle>{{ event.description }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="event-details">
+      <p>When: {{ event.date }}</p>
+      <p>Where: {{ event.location }}</p>
+      <p>Capacity: {{ event.capacity }}</p>
+      <p>No. of Attendees: {{ event.reservations.length }}</p>
+      <p *ngIf="event.capacity === event.reservations.length"><strong>Sold out!</strong></p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-stroked-button color="primary" (click)="viewEvent(event.id)">View</button>
+      <button mat-button color="primary" *ngIf="role.includes('ROLE_ORGANIZER') || role.includes('ROLE_ADMIN')" (click)="updateEvent(event.id)">Edit</button>
+      <button mat-button color="warn" *ngIf="role.includes('ROLE_ORGANIZER') || role.includes('ROLE_ADMIN')" (click)="deleteEvent(event.id)">Delete</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

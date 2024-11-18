@@ -1,0 +1,17 @@
+<mat-toolbar color="primary">
+  <div class="toolbar-container">
+    <!-- Logo or Title -->
+    <span class="logo"><a routerLink="/events/view">Event Sphere</a></span>
+
+    <!-- Conditional Login/Logout Button -->
+     <span *ngIf="isLoggedIn; else loginTemplate">
+      <span class="username">{{ username }}</span>
+      <button mat-raised-button color="warn" (click)="onLogout()">Logout</button>
+     </span>
+     <ng-template #loginTemplate>
+       <button mat-raised-button color="primary" (click)="onLogin()">Login</button>
+     </ng-template>
+  </div>
+</mat-toolbar>
+<!-- Router Outlet to display the routed components -->
+<router-outlet></router-outlet>

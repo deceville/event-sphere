@@ -1,0 +1,40 @@
+<mat-toolbar color="primary">
+  <span>{{ isEditing ? 'Edit Event' : 'Create Event' }}</span>
+</mat-toolbar>
+<div class="container">
+  <mat-card appearance="outlined">
+    <form (ngSubmit)="onSubmit()" #eventForm="ngForm">
+      <mat-form-field appearance="outline">
+        <mat-label>Title</mat-label>
+        <input matInput type="text" id="title" [(ngModel)]="event.title" name="title" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea matInput id="description" [(ngModel)]="event.description" name="description" required></textarea>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" *ngIf="!isEditing">
+        <mat-label>Capacity</mat-label>
+        <input matInput type="text" id="capacity" [(ngModel)]="event.capacity" name="capacity" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Date</mat-label>
+        <input matInput [matDatepicker]="picker" id="date" [(ngModel)]="event.date" name="date" (dateChange)="onDateChange(event)" required />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Location</mat-label>
+        <input matInput type="text" id="location" [(ngModel)]="event.location" name="location" required />
+      </mat-form-field>
+
+      <div class="actions">
+        <button mat-flat-button color="primary" type="submit" [disabled]="eventForm.invalid">{{ isEditing ? 'Update' : 'Create' }}</button>
+        <button mat-button color="warn" type="button" (click)="backEvent()">Cancel</button>
+      </div>
+    </form>
+  </mat-card>
+</div>

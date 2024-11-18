@@ -1,0 +1,14 @@
+<div *ngIf="reservations.length">
+  <h2>Your Reservations</h2>
+  <ul>
+    <li *ngFor="let reservation of reservations">
+      <p>Event: {{ reservation.event.name }}</p>
+      <p>Status: {{ reservation.status }}</p>
+      <button (click)="cancelReservation(reservation.id)">Cancel Reservation</button>
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="!reservations.length">
+  <p>You have no reservations.</p>
+</div>

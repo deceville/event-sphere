@@ -1,0 +1,33 @@
+<mat-toolbar color="primary">
+  <span>Event Detail</span>
+</mat-toolbar>
+<mat-card *ngIf="event" class="event-card" appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>{{ event.title }}</mat-card-title>
+    <mat-card-subtitle>{{ event.description }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="event-details">
+    <p>When: {{ event.date }}</p>
+    <p>Where: {{ event.location }}</p>
+    <p>Capacity: {{ event.capacity }}</p>
+    <p *ngIf="event.capacity === reservationLength"><strong>This event is fully booked!</strong></p>
+    <p>{{ reservationLength }} / {{ event.capacity }} people are attending.</p>
+    <mat-divider></mat-divider>
+    <p *ngIf="reservation">You already booked a reservation for this event.</p>
+  </mat-card-content>
+  <mat-card-actions *ngIf="!reservation && event.capacity !== reservationLength">
+    <button mat-flat-button color="primary" *ngIf="role.includes('ROLE_AUDIENCE') || role.includes('ROLE_ADMIN')" mat-button (click)="bookReservation(event.id)">Book Reservation</button>
+  </mat-card-actions>
+  <mat-card-actions *ngIf="reservation">
+    <button mat-stroked-button color="warn" *ngIf="role.includes('ROLE_AUDIENCE') || role.includes('ROLE_ADMIN')" (click)="cancelReservation(reservation.id)">Cancel Reservation</button>
+  </mat-card-actions>
+  <mat-card-actions *ngIf="role.includes('ROLE_ADMIN') || role.includes('ROLE_ORGANIZER')">
+    <button mat-stroked-button color="warn" (click)="cancelEvent(event.id)">Cancel Event</button>
+  </mat-card-actions>
+  <mat-card-actions>
+    <button mat-button (click)="backEvent()">Back</button>
+  </mat-card-actions>
+</mat-card>
+
+<!-- Loading spinner if event data is not available -->
+<mat-spinner *ngIf="!event" diameter="50"></mat-spinner>
